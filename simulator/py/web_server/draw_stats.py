@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import math
 import numpy as np
 
-SIMULATOR_PATH = '/home/voja/work/sigcomm/simulator/final/web_server/'
+SIMULATOR_PATH = '/home/vagrant/dev/flux/simulator/py/web_server/'
 PATH_FLOW_DISTRIBUTION = './data/flow_distribution.txt'
 PATH_EXECUTION_TIME = './data/execution_time.txt'
 PATH_INCOMING_FLOW = './data/incoming_flow.txt'
