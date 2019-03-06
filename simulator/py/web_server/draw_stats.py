@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import math
 import numpy as np
 
-SIMULATOR_PATH = '/home/vagrant/dev/flux/simulator/py/web_server/'
+SIMULATOR_PATH = '/home/jethros/tmp/flux/simulator/py/web_server/'
 PATH_FLOW_DISTRIBUTION = './data/flow_distribution.txt'
 PATH_EXECUTION_TIME = './data/execution_time.txt'
 PATH_INCOMING_FLOW = './data/incoming_flow.txt'
@@ -17,7 +17,7 @@ def draw_flow_distribution():
     for f in os.listdir(SIMULATOR_PATH):
         df = pd.read_csv(SIMULATOR_PATH + f, index_col=False)
         flows += df['size'].tolist()
-        
+
     flows = sorted(flows)
 
     #write file
@@ -46,7 +46,7 @@ def draw_execution_time():
     for f in os.listdir(SIMULATOR_PATH):
         df = pd.read_csv(SIMULATOR_PATH + f, index_col=False)
         execution_time.append(df['time'].tolist()[-2])
-        
+
     execution_time = sorted(execution_time)
     #write file
     with open(PATH_EXECUTION_TIME,'w') as f:
@@ -75,7 +75,7 @@ def draw_incoming_flow():
         df = pd.read_csv(SIMULATOR_PATH + f, index_col=False)
         time = df['time'].tolist()
         freqs.append((time[-2]/1000.)/len(time))
-        
+
     freqs = sorted(freqs)
 
     #write file
