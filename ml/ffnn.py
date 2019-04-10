@@ -1,28 +1,15 @@
 
 # LSTM for international airline passengers problem with regression framing
-import numpy
-import pandas as pd
-from keras.models import Sequential
-from keras.layers import Dense
-from keras.layers import LSTM
-from keras.layers import Activation
-from sklearn.preprocessing import MinMaxScaler
-from sklearn.metrics import r2_score
 import os
 
-# fix random seed for reproducibility
-numpy.random.seed(7)
+import numpy
+import pandas as pd
 
-TEST_NAME = "KMeans"
-#TEST_NAME = "PageRank"
-#TEST_NAME = "SGD"
-#TEST_NAME = "tensorflow"
-#TEST_NAME = "web_server"
-look_back = 5
+from keras.layers import Activation, Dense, LSTM
+from keras.models import Sequential
 
-TRAIN_PATH = '../data/ml/' + TEST_NAME +'/training/'
-TEST_PATH = '../data/ml/' + TEST_NAME +'/test/'
-VALIDATION_PATH = '../data/ml/' + TEST_NAME +'/validation/'
+from sklearn.metrics import r2_score
+from sklearn.preprocessing import MinMaxScaler
 
 
 def create_dataset(dataset, look_back=1):
@@ -49,38 +36,55 @@ def load_dataset(path, ):
 
     return dataset
 
-# normalize the dataset
-scaler = MinMaxScaler(feature_range=(0, 1))
+def main():
+    # fix random seed for reproducibility
+    numpy.random.seed(7)
 
-train = load_dataset(TRAIN_PATH)
-train = scaler.fit_transform(train)
+    look_back = 5
 
-test = load_dataset(TEST_PATH)
-test = scaler.transform(test)
+    TRAIN_PATH = '../data/ml/' + test_name +'/training/'
+    TEST_PATH = '../data/ml/' + test_name +'/test/'
+    VALIDATION_PATH = '../data/ml/' + test_name +'/validation/'
 
-validation = load_dataset(VALIDATION_PATH)
-validation = scaler.transform(validation)
+    # normalize the dataset
+    scaler = MinMaxScaler(feature_range=(0, 1))
+
+    train = load_dataset(TRAIN_PATH)
+    train = scaler.fit_transform(train)
+
+    test = load_dataset(TEST_PATH)
+    test = scaler.transform(test)
+
+    validation = load_dataset(VALIDATION_PATH)
+    validation = scaler.transform(validation)
 
 
-trainX, trainY = create_dataset(train, look_back)
-testX, testY = create_dataset(test, look_back)
-validationX, validationY = create_dataset(validation, look_back)
+    trainX, trainY = create_dataset(train, look_back)
+    testX, testY = create_dataset(test, look_back)
+    validationX, validationY = create_dataset(validation, look_back)
 
-model = Sequential()
-model.add(Dense(5, input_dim=trainX.shape[1], activation='relu'))
-model.add(Dense(5, activation='relu'))
-model.add(Dense(1, activation='sigmoid'))
-model.compile(loss='mean_absolute_error', optimizer='adam')
-model.fit(trainX, trainY, epochs=250, batch_size=10, verbose=2)
+    model = Sequential()
+    model.add(Dense(5, input_dim=trainX.shape[1], activation='relu'))
+    model.add(Dense(5, activation='relu'))
+    model.add(Dense(1, activation='sigmoid'))
+    model.compile(loss='mean_absolute_error', optimizer='adam')
+    model.fit(trainX, trainY, epochs=250, batch_size=10, verbose=2)
 
-# make predictions
-trainPredict = model.predict(trainX)
-testPredict = model.predict(testX)
-validationPredict = model.predict(validationX)
+    # make predictions
+    trainPredict = model.predict(trainX)
+    testPredict = model.predict(testX)
+    validationPredict = model.predict(validationX)
 
-trainScore = r2_score(trainY.flatten(), trainPredict.flatten())
-print('Train Score: %.2f R2' % (trainScore))
-testScore = r2_score(testY.flatten(), testPredict.flatten())
-print('Test Score: %.2f R2' % (testScore))
-validationScore = r2_score(validationY.flatten(), validationPredict.flatten())
-print('Validation Score: %.2f R2' % (validationScore))
+    trainScore = r2_score(trainY.flatten(), trainPredict.flatten())
+    print('Train Score: %.2f R2' % (trainScore))
+    testScore = r2_score(testY.flatten(), testPredict.flatten())
+    print('Test Score: %.2f R2' % (testScore))
+    validationScore = r2_score(validationY.flatten(), validationPredict.flatten())
+    print('Validation Score: %.2f R2' % (validationScore))
+
+
+if __name__ == "__main__":
+    for test_name in ["KMeans", "PageRank", "SGD", "tensorflow", "web_server"]:
+        print(test_name)
+        main(test_name)
+
