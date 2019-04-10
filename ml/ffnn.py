@@ -86,6 +86,6 @@ def main():
 if __name__ == "__main__":
     print("Starting running experiment:\n")
     for test_name in ["KMeans", "PageRank", "SGD", "tensorflow", "web_server"]:
-        print(test_name)
+        print("Case %s",test_name)
         main(test_name)
 
