@@ -36,7 +36,7 @@ def load_dataset(path, ):
 
     return dataset
 
-def main():
+def main(test_name):
     # fix random seed for reproducibility
     numpy.random.seed(7)
 
