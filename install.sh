@@ -22,9 +22,8 @@ unset PYENV_VERSION
 # Set version to 2.7.10
 export PYENV_VERSION=2.7.16
 
-
 pyenv install $PYENV_VERSION
-
+pip install -r requirements.txt
 # Reset version
 unset PYENV_VERSION
 

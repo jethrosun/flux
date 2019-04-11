@@ -11,7 +11,8 @@ import matplotlib.pyplot as plt
 import xgboost_util
 
 
-def print_performance(files, write_to_simulator=False):
+def print_performance(files, WINDOW_SIZE, scaling, model,
+                      TARGET_COLUMN, write_to_simulator=False ):
     real = []
     predicted = []
     for f in files:
@@ -65,19 +66,19 @@ def main(test_name):
     model = xgboost.train(param, training, param['num_epochs'])
 
     print 'TRAINING'
-    print_performance(training_files)
+    print_performance(training_files,WINDOW_SIZE,scaling,model, TARGET_COLUMN)
     print
 
     print 'TEST'
-    print_performance(test_files)
+    print_performance(test_files, WINDOW_SIZE, scaling, model, TARGET_COLUMN)
     print
 
     print 'VALIDATION'
-    print_performance(validation_files)
+    print_performance(validation_files, WINDOW_SIZE,scaling, model, TARGET_COLUMN)
 
 if __name__ == "__main__":
     print("Starting running experiment:\n")
-    for test_name in ["KMeans", "PageRank", "SGD", "tensorflow", "web_server"]:
+    for test_name in ["KMeans", "PageRank", "SGD", "web_server"]:
         print("Case %s", test_name)
         main(test_name)
 
