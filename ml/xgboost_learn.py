@@ -3,12 +3,12 @@ import os
 import math
 import random
 
-import xgboost
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 
+import xgboost
 import xgboost_util
+import matplotlib.pyplot as plt
 
 
 def print_performance(files, WINDOW_SIZE, scaling, model,
