@@ -72,7 +72,7 @@ def main(test_name):
     model.add(ConvLSTM2D(
             filters=40,
             kernel_size=(3, 3),
-            input_shape=(None, 135, 240, 1),
+            input_shape=(train.shape[1], look_back),
             padding='same',
             return_sequences=True))
     model.add(BatchNormalization())

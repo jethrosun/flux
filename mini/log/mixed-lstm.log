@@ -1,0 +1,178 @@
+Starting running experiment:
+
+Case %s KMeans
+Epoch 1/20
+ - 9s - loss: 0.9967
+Epoch 2/20
+ - 9s - loss: 0.9967
+Epoch 3/20
+ - 9s - loss: 0.9967
+Epoch 4/20
+ - 9s - loss: 0.9967
+Epoch 5/20
+ - 9s - loss: 0.9967
+Epoch 6/20
+ - 9s - loss: 0.9967
+Epoch 7/20
+ - 9s - loss: 0.9967
+Epoch 8/20
+ - 9s - loss: 0.9967
+Epoch 9/20
+ - 9s - loss: 0.9967
+Epoch 10/20
+ - 9s - loss: 0.9967
+Epoch 11/20
+ - 9s - loss: 0.9967
+Epoch 12/20
+ - 9s - loss: 0.9967
+Epoch 13/20
+ - 9s - loss: 0.9967
+Epoch 14/20
+ - 9s - loss: 0.9967
+Epoch 15/20
+ - 9s - loss: 0.9967
+Epoch 16/20
+ - 9s - loss: 0.9967
+Epoch 17/20
+ - 9s - loss: 0.9967
+Epoch 18/20
+ - 9s - loss: 0.9967
+Epoch 19/20
+ - 9s - loss: 0.9967
+Epoch 20/20
+ - 9s - loss: 0.9967
+Train Score: -669.41 R2
+Test Score: -693.08 R2
+Validation Score: -609.51 R2
+Case %s PageRank
+Epoch 1/20
+ - 5s - loss: 0.9980
+Epoch 2/20
+ - 5s - loss: 0.9980
+Epoch 3/20
+ - 5s - loss: 0.9980
+Epoch 4/20
+ - 5s - loss: 0.9980
+Epoch 5/20
+ - 5s - loss: 0.9980
+Epoch 6/20
+ - 5s - loss: 0.9980
+Epoch 7/20
+ - 5s - loss: 0.9980
+Epoch 8/20
+ - 5s - loss: 0.9980
+Epoch 9/20
+ - 5s - loss: 0.9980
+Epoch 10/20
+ - 5s - loss: 0.9980
+Epoch 11/20
+ - 5s - loss: 0.9980
+Epoch 12/20
+ - 5s - loss: 0.9980
+Epoch 13/20
+ - 5s - loss: 0.9980
+Epoch 14/20
+ - 5s - loss: 0.9980
+Epoch 15/20
+ - 5s - loss: 0.9980
+Epoch 16/20
+ - 5s - loss: 0.9980
+Epoch 17/20
+ - 5s - loss: 0.9980
+Epoch 18/20
+ - 5s - loss: 0.9980
+Epoch 19/20
+ - 5s - loss: 0.9980
+Epoch 20/20
+ - 5s - loss: 0.9980
+Train Score: -1945.92 R2
+Test Score: -1039.86 R2
+Validation Score: -1273.45 R2
+Case %s SGD
+Epoch 1/20
+ - 48s - loss: 0.9972
+Epoch 2/20
+ - 48s - loss: 0.9972
+Epoch 3/20
+ - 48s - loss: 0.9972
+Epoch 4/20
+ - 49s - loss: 0.9972
+Epoch 5/20
+ - 49s - loss: 0.9972
+Epoch 6/20
+ - 51s - loss: 0.9972
+Epoch 7/20
+ - 48s - loss: 0.9972
+Epoch 8/20
+ - 49s - loss: 0.9972
+Epoch 9/20
+ - 48s - loss: 0.9972
+Epoch 10/20
+ - 49s - loss: 0.9972
+Epoch 11/20
+ - 52s - loss: 0.9972
+Epoch 12/20
+ - 49s - loss: 0.9972
+Epoch 13/20
+ - 48s - loss: 0.9972
+Epoch 14/20
+ - 48s - loss: 0.9972
+Epoch 15/20
+ - 49s - loss: 0.9972
+Epoch 16/20
+ - 48s - loss: 0.9972
+Epoch 17/20
+ - 48s - loss: 0.9972
+Epoch 18/20
+ - 48s - loss: 0.9972
+Epoch 19/20
+ - 48s - loss: 0.9972
+Epoch 20/20
+ - 49s - loss: 0.9972
+Train Score: -20517.26 R2
+Test Score: -7795.72 R2
+Validation Score: -1810.43 R2
+Case %s web_server
+Epoch 1/20
+ - 0s - loss: 0.9325
+Epoch 2/20
+ - 0s - loss: 0.9325
+Epoch 3/20
+ - 0s - loss: 0.9325
+Epoch 4/20
+ - 0s - loss: 0.9325
+Epoch 5/20
+ - 0s - loss: 0.9325
+Epoch 6/20
+ - 0s - loss: 0.9325
+Epoch 7/20
+ - 0s - loss: 0.9325
+Epoch 8/20
+ - 0s - loss: 0.9325
+Epoch 9/20
+ - 0s - loss: 0.9325
+Epoch 10/20
+ - 0s - loss: 0.9325
+Epoch 11/20
+ - 0s - loss: 0.9325
+Epoch 12/20
+ - 0s - loss: 0.9325
+Epoch 13/20
+ - 0s - loss: 0.9325
+Epoch 14/20
+ - 0s - loss: 0.9325
+Epoch 15/20
+ - 0s - loss: 0.9325
+Epoch 16/20
+ - 0s - loss: 0.9325
+Epoch 17/20
+ - 0s - loss: 0.9325
+Epoch 18/20
+ - 0s - loss: 0.9325
+Epoch 19/20
+ - 0s - loss: 0.9325
+Epoch 20/20
+ - 0s - loss: 0.9325
+Train Score: -78.98 R2
+Test Score: -161.72 R2
+Validation Score: -123.62 R2
