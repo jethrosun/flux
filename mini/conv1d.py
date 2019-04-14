@@ -8,7 +8,7 @@ import pandas as pd
 from sklearn.metrics import r2_score
 from sklearn.preprocessing import MinMaxScaler
 
-from keras.layers import ConvLSTM2D, Dense
+from keras.layers import Conv1D, Dense
 from keras.models import Sequential
 
 
@@ -39,7 +39,7 @@ def load_dataset(path, cut = -1):
 
 def main(test_name):
     numpy.random.seed(7)
-    look_back = 5
+    look_back = 3
 
     TRAIN_PATH = '../data/ml/' + test_name +'/training/'
     TEST_PATH = '../data/ml/' + test_name +'/test/'
@@ -70,7 +70,7 @@ def main(test_name):
     print(look_back)
 
     model = Sequential()
-    model.add(ConvLSTM2D(64, 5, input_shape=(train.shape[1], look_back)))
+    model.add(Conv1D(64, 5, input_shape=(train.shape[1], 3)))
     model.add(Dense(1))
     model.compile(loss='mean_absolute_error', optimizer='adam')
     model.fit(trainX, trainY, epochs=20, batch_size=20, verbose=2)
