@@ -1,4 +1,4 @@
-# ConvLSTM2D
+# LSTM for international airline passengers problem with regression framing
 import os
 import math
 
@@ -8,7 +8,7 @@ import pandas as pd
 from sklearn.metrics import r2_score
 from sklearn.preprocessing import MinMaxScaler
 
-from keras.layers import Conv1D, Dense
+from keras.layers import Dense, Conv1D, Flatten
 from keras.models import Sequential
 
 
@@ -66,13 +66,11 @@ def main(test_name):
     testX = numpy.reshape(testX, (testX.shape[0], test.shape[1], testX.shape[1]))
     validationX = numpy.reshape(validationX, (validationX.shape[0], validation.shape[1], validationX.shape[1]))
 
-    print(train.shape[1])
-    print(look_back)
-
     model = Sequential()
-    model.add(Conv1D(64, 5, input_shape=(train.shape[1], 3)))
+    model.add(Conv1D(64, 3, input_shape=(train.shape[1], look_back), padding='causal'))
+    model.add(Flatten())
     model.add(Dense(1))
-    model.compile(loss='mean_absolute_error', optimizer='adam')
+    model.compile(loss='mean_squared_error', optimizer='adam')
     model.fit(trainX, trainY, epochs=20, batch_size=20, verbose=2)
 
     # make predictions

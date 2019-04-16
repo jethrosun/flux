@@ -8,7 +8,7 @@ import pandas as pd
 from sklearn.metrics import r2_score
 from sklearn.preprocessing import MinMaxScaler
 
-from keras.layers import Dense, LSTM, TimeDistributed
+from keras.layers import Dense, GRU, TimeDistributed
 from keras.models import Sequential
 
 
@@ -41,7 +41,7 @@ def main(test_name):
     hidden_neurons = [1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192]
 
     for n_neurons in hidden_neurons:
-        print("\nThere is {} hidden neurons in this LSTM\n".format(n_neurons))
+        print("\nThere is {} hidden neurons in this GRU\n".format(n_neurons))
         numpy.random.seed(7)
         look_back = 3
 
@@ -71,7 +71,7 @@ def main(test_name):
         validationX = numpy.reshape(validationX, (validationX.shape[0], validation.shape[1], validationX.shape[1]))
 
         model = Sequential()
-        model.add(LSTM(n_neurons, input_shape=(train.shape[1], look_back)))
+        model.add(GRU(n_neurons, input_shape=(train.shape[1], look_back)))
         #model.add(TimeDistributed(Dense(3)))
         model.add(Dense(1))
         model.compile(loss='mean_squared_error', optimizer='adam')

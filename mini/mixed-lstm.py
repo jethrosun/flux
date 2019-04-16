@@ -78,7 +78,7 @@ def main(test_name):
 
 
     model.compile(loss='mean_absolute_error', optimizer='adam')
-    model.fit(trainX, trainY, epochs=20, batch_size=20, verbose=2)
+    model.fit(trainX, trainY, epochs=250, batch_size=20, verbose=2)
 
     # make predictions
     trainPredict = model.predict(trainX)

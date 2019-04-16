@@ -8,7 +8,7 @@ import pandas as pd
 from sklearn.metrics import r2_score
 from sklearn.preprocessing import MinMaxScaler
 
-from keras.layers import ConvLSTM2D, Dense, TimeDistributed, Conv2D,BatchNormalization, AveragePooling3D,Reshape
+from keras.layers import ConvLSTM2D, Dense, TimeDistributed, Conv2D,BatchNormalization, AveragePooling3D,Reshape, Flatten
 from keras.models import Sequential
 
 
@@ -62,53 +62,21 @@ def main(test_name):
     validationX, validationY = create_dataset(validation, look_back)
 
 
-    trainX = numpy.reshape(trainX, (trainX.shape[0], train.shape[1], trainX.shape[1]))
-    testX = numpy.reshape(testX, (testX.shape[0], test.shape[1], testX.shape[1]))
-    validationX = numpy.reshape(validationX, (validationX.shape[0], validation.shape[1], validationX.shape[1]))
+    trainX = numpy.reshape(trainX, (trainX.shape[0], train.shape[1], trainX.shape[1], trainX.shape[1], trainX.shape[1]))
+    testX = numpy.reshape(testX, (testX.shape[0], test.shape[1], testX.shape[1], testX.shape[1], testX.shape[1]))
+    validationX = numpy.reshape(validationX, (validationX.shape[0], validation.shape[1], validationX.shape[1], validationX.shape[1], validationX.shape[1]))
 
     model = Sequential()
-
-
-    model.add(ConvLSTM2D(
-            filters=40,
-            kernel_size=(3, 3),
-            input_shape=(None, 135, 240, 1),
-            padding='same',
-            return_sequences=True))
-    model.add(BatchNormalization())
-
-    model.add(ConvLSTM2D(
-            filters=40,
-            kernel_size=(3, 3),
-            padding='same',
-            return_sequences=True))
-    model.add(BatchNormalization())
-
-    model.add(ConvLSTM2D(
-            filters=40,
-            kernel_size=(3, 3),
-            padding='same',
-            return_sequences=True))
-    model.add(BatchNormalization())
-
-    model.add(AveragePooling3D((1, 135, 240)))
-    model.add(Reshape((-1, 40)))
-    model.add(Dense(
-            units=9,
-            activation='sigmoid'))
-
-    model.compile(
-            loss='categorical_crossentropy',
-            optimizer='adadelta'
-    )
 
     #model.add(ConvLSTM2D(3, kernel_size=3, padding = "same", batch_input_shape=(1, train.shape[1], look_back), return_sequences=True, stateful=True))
     #model.add(TimeDistributed((Conv2D(1, kernel_size=3, padding = "same"))))
     #model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
-    #model.add(ConvLSTM2D(64, 5, input_shape=(train.shape[1], look_back)))
-    #model.add(Dense(1))
-    #model.compile(loss='mean_absolute_error', optimizer='adam')
+    # ConvLSTM2D will add one more dim automatically
+    model.add(ConvLSTM2D(64, 3, input_shape=(1, train.shape[1], look_back, 1)))
+    model.add(Flatten())
+    model.add(Dense(1))
+    model.compile(loss='mean_absolute_error', optimizer='adam')
 
     model.summary()
     model.fit(trainX, trainY, epochs=20, batch_size=20, verbose=2)
